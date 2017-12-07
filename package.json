@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "Exports a Single-Page App to static HTML",
   "main": "index.js",
-  "bin": "./cli.js",
+  "bin": "./bin/cli",
   "author": "Shane Logsdon <shane@shanelogsdon.com>",
   "license": "MIT",
   "repository": "slogsdon/node-static-export",
