@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const pushstate = require('pushstate-server');
 const {log, start, tryClose} = require('./index');
 const optimist = require('optimist');
