@@ -18,6 +18,10 @@ Ensure your web app is present in `./build` of your project directory, and run `
 
 See `static-export --help` for more.
 
+## Compatibility
+
+`static-export` uses Chromium (controlled by [`puppeteer`](https://github.com/GoogleChrome/puppeteer)) to load your web app and [`pushstate-server`](https://github.com/scottcorgan/pushstate-server) to serve it, so any client-side JavaScript required to load the initial content should continue to work as long as it runs in a normal browser session.
+
 ## LICENSE
 
 This project is licensed under the MIT License.
