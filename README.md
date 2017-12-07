@@ -1,18 +1,22 @@
 # `static-export`
 
-Exports a Single-Page App to static HTML
+Pre-renders a web app to static HTML. Perfect for:
+
+- Progressive Web Applications (PWAs)
+- Regular ol' Single-Page Applications (SPAs)
+- TODO: The website that _just needs to be written in the next-best-thing_ but doesn't run on your server
 
 ## Installation
 
 ```
-npm install --save-dev static-export
+npm install -g static-export
 ```
 
 ## Usage
 
-```
-./node_modules/.bin/static-export
-```
+Ensure your web app is present in `./build` of your project directory, and run `static-export`. New HTML files with pre-rendered content are placed alongside existing static assets in `./build`.
+
+See `static-export --help` for more.
 
 ## LICENSE
 
