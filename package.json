@@ -1,6 +1,6 @@
 {
   "name": "static-export",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Exports a Single-Page App to static HTML",
   "main": "index.js",
   "bin": "./bin/cli",
