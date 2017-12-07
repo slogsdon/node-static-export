@@ -1,13 +1,16 @@
 {
   "name": "static-export",
-  "version": "1.0.1",
-  "description": "Exports a website to static HTML",
+  "version": "1.0.2",
+  "description": "Exports a Single-Page App to static HTML",
   "main": "index.js",
+  "bin": "./cli.js",
   "author": "Shane Logsdon <shane@shanelogsdon.com>",
   "license": "MIT",
+  "repository": "slogsdon/node-static-export",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "mkdirp": "^0.5.1",
+    "optimist": "^0.6.1",
     "puppeteer": "^0.13.0",
     "pushstate-server": "^3.0.1"
   }
