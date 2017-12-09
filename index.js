@@ -7,6 +7,7 @@ const fs = require('fs');
 const QUIET = false;
 const BUILD = 'build';
 
+const context = process.cwd();
 const prompt = '  >';
 const uriSeparator = '/';
 
@@ -36,7 +37,7 @@ const crawlAndWrite = async (chrome, address, route) => {
 
   // obtain page HTML
   const page = await chrome.newPage();
-  const response = await page.goto(`http://${address.address}:${address.port}${route}`, {waitUntil: 'networkidle'});
+  const response = await page.goto(`http://${address.address}:${address.port}${route}`, {waitUntil: 'networkidle2'});
   const html = await page.evaluate(() => (
     new XMLSerializer().serializeToString(document.doctype) + document.documentElement.outerHTML
   ));
@@ -53,7 +54,7 @@ const crawlAndWrite = async (chrome, address, route) => {
   mkdirp.sync(destDir);
   fs.writeFileSync(outFile, html);
 
-  log(`${prompt} Saved ${route} to ${destDir.replace(context, '').replace('/.export', '')}${uriSeparator}index.html`);
+  log(`${prompt} Saved ${route} to ${destDir.replace(context, '').replace('/.static-export', '')}${uriSeparator}index.html`);
 
   // crawl page HTML for internal links
   const $ = cheerio.load(html);
@@ -73,15 +74,15 @@ const start = async (server, address, options) => {
     options = {};
   }
 
-  outDir = path.join(process.cwd(), options.path || BUILD);
-  buildDir = path.join(outDir, '.export');
+  outDir = path.join(context, options.path || BUILD);
+  buildDir = path.join(outDir, '.static-export');
   quiet = options.quiet || QUIET;
 
   const chrome = await puppeteer.launch();
 
   try {
     await crawlAndWrite(chrome, address, uriSeparator);
-  } catch (e) { /* om nom nom */ }
+  } catch (e) { log(e); }
 
   chrome.close();
   tryClose(server);
